@@ -1,0 +1,102 @@
+cells:
+  - kind: 2
+    value: "INSERT INTO TICKETS (\r
+
+      \    ticket_id,\r
+
+      \    title,\r
+
+      \    description,\r
+
+      \    priority,\r
+
+      \    status,\r
+
+      \    created_by,\r
+
+      \    assigned_to,\r
+
+      \    computer_id\r
+
+      )\r
+
+      VALUES (\r
+
+      \    2,\r
+
+      \    'Keyboard issue',\r
+
+      \    'Keyboard not working',\r
+
+      \    'LOW',\r
+
+      \    'OPEN',\r
+
+      \    3,\r
+
+      \    2,\r
+
+      \    1\r
+
+      );\r
+
+      \r
+
+      COMMIT;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT ticket_id, title, creation_date\r
+
+      FROM TICKETS;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "BEGIN\r
+
+      \    add_ticket(\r
+
+      \        3,\r
+
+      \        'Screen issue',\r
+
+      \        'Black screen on startup',\r
+
+      \        'HIGH',\r
+
+      \        'OPEN',\r
+
+      \        3,\r
+
+      \        2,\r
+
+      \        1\r
+
+      \    );\r
+
+      END;\r
+
+      /"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT ticket_id, title\r
+
+      FROM TICKETS;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "BEGIN\r
+
+      \    generate_tickets(1000);\r
+
+      END;\r
+
+      /"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT COUNT(*)\r\nFROM TICKETS;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "CREATE TABLE PLAN_TABLE AS\r
+
+      SELECT *\r
+
+      FROM SYSTEM.PLAN_TABLE$;"
+    languageId: oracle-sql

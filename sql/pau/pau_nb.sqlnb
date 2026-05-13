@@ -1,0 +1,33 @@
+cells:
+  - kind: 2
+    value: "BEGIN\r
+
+      \    add_ticket(\r
+
+      \        2,\r
+
+      \        'Mouse issue',\r
+
+      \        'Mouse not detected',\r
+
+      \        'LOW',\r
+
+      \        'OPEN',\r
+
+      \        3,\r
+
+      \        2,\r
+
+      \        1\r
+
+      \    );\r
+
+      END;\r
+
+      /"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT ticket_id, title, creation_date\r
+
+      FROM TICKETS;"
+    languageId: oracle-sql

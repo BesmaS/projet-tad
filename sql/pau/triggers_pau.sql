@@ -1,0 +1,7 @@
+CREATE OR REPLACE TRIGGER trg_ticket_creation
+BEFORE INSERT ON TICKETS
+FOR EACH ROW
+BEGIN
+    :NEW.creation_date := SYSDATE;
+END;
+/
