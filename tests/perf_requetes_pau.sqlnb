@@ -79,7 +79,7 @@ cells:
 
       JOIN   USERS u ON c.assigned_user = u.user_id\r
 
-      WHERE  c.site_id       = 1\r
+      WHERE  c.site_id       = 2\r
 
       AND    c.computer_type = 'DESKTOP'\r
 
@@ -100,7 +100,7 @@ cells:
 
       JOIN   USERS u ON c.assigned_user = u.user_id\r
 
-      WHERE  c.site_id       = 1\r
+      WHERE  c.site_id       = 2\r
 
       AND    c.computer_type = 'DESKTOP'\r
 
@@ -112,7 +112,7 @@ cells:
       ### SANS index composé"
     languageId: markdown
   - kind: 2
-    value: ALTER INDEX idx_cergy_tickets_site_status INVISIBLE;
+    value: ALTER INDEX idx_pau_tickets_site_status INVISIBLE;
     languageId: oracle-sql
   - kind: 2
     value: "EXPLAIN PLAN FOR\r
@@ -160,7 +160,7 @@ cells:
       ### AVEC index composé"
     languageId: markdown
   - kind: 2
-    value: ALTER INDEX idx_cergy_tickets_site_status VISIBLE;
+    value: ALTER INDEX idx_pau_tickets_site_status VISIBLE;
     languageId: oracle-sql
   - kind: 2
     value: "EXPLAIN PLAN FOR\r
@@ -203,9 +203,7 @@ cells:
       ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);"
     languageId: oracle-sql
   - kind: 1
-    value: "## Requête 3 : Historique d'affectation d'un ordinateur\r
-
-      ### Test index sur HISTO_AFFECTATION"
+    value: "## Requête 3 : Historique d'affectation d'un ordinateur\r\n"
     languageId: markdown
   - kind: 2
     value: "EXPLAIN PLAN FOR\r
@@ -226,7 +224,7 @@ cells:
 
       JOIN   USERS     u ON h.user_id     = u.user_id\r
 
-      WHERE  h.computer_id = 1010\r
+      WHERE  h.computer_id = 2010\r
 
       ORDER  BY h.date_debut DESC;\r
 
@@ -251,7 +249,7 @@ cells:
 
       JOIN   USERS     u ON h.user_id     = u.user_id\r
 
-      WHERE  h.computer_id = 1010\r
+      WHERE  h.computer_id = 2010\r
 
       ORDER  BY h.date_debut DESC;"
     languageId: oracle-sql
@@ -280,7 +278,7 @@ cells:
 
       JOIN   TICKETS   t ON t.computer_id   = c.computer_id\r
 
-      WHERE  c.site_id = 1\r
+      WHERE  c.site_id = 2\r
 
       GROUP  BY c.computer_name, u.username\r
 
@@ -304,7 +302,7 @@ cells:
 
       WHERE  u.role_id = 2\r
 
-      AND    u.site_id = 1\r
+      AND    u.site_id = 2\r
 
       ORDER  BY tickets_ouverts DESC;"
     languageId: oracle-sql
