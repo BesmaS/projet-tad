@@ -1,0 +1,315 @@
+cells:
+  - kind: 1
+    value: "# Tests de Performance - GLPI CY Tech - Cergy\r
+
+      \r
+
+      Ce notebook teste les performances des requêtes avant/après
+      indexation.\r\n"
+    languageId: markdown
+  - kind: 1
+    value: "## Requête 1 : Matériels actifs par type\r
+
+      ### SANS index composé (index invisible)"
+    languageId: markdown
+  - kind: 2
+    value: ALTER INDEX idx_cergy_computers_site_type_status INVISIBLE;
+    languageId: oracle-sql
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT c.computer_id, c.inventory_number, c.computer_name,\r
+
+      \       c.brand, c.model, c.computer_type, c.status,\r
+
+      \       u.username, u.email\r
+
+      FROM   COMPUTERS c\r
+
+      JOIN   USERS u ON c.assigned_user = u.user_id\r
+
+      WHERE  c.site_id       = 1\r
+
+      AND    c.computer_type = 'DESKTOP'\r
+
+      AND    c.status        = 'ACTIVE';\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT c.computer_id, c.inventory_number, c.computer_name,\r
+
+      \       c.brand, c.model, c.computer_type, c.status,\r
+
+      \       u.username, u.email\r
+
+      FROM   COMPUTERS c\r
+
+      JOIN   USERS u ON c.assigned_user = u.user_id\r
+
+      WHERE  c.site_id       = 1\r
+
+      AND    c.computer_type = 'DESKTOP'\r
+
+      AND    c.status        = 'ACTIVE';"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 1 : Matériels actifs par type\r
+
+      ### AVEC index composé (index visible)"
+    languageId: markdown
+  - kind: 2
+    value: ALTER INDEX idx_cergy_computers_site_type_status VISIBLE;
+    languageId: oracle-sql
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT c.computer_id, c.inventory_number, c.computer_name,\r
+
+      \       c.brand, c.model, c.computer_type, c.status,\r
+
+      \       u.username, u.email\r
+
+      FROM   COMPUTERS c\r
+
+      JOIN   USERS u ON c.assigned_user = u.user_id\r
+
+      WHERE  c.site_id       = 1\r
+
+      AND    c.computer_type = 'DESKTOP'\r
+
+      AND    c.status        = 'ACTIVE';\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT c.computer_id, c.inventory_number, c.computer_name,\r
+
+      \       c.brand, c.model, c.computer_type, c.status,\r
+
+      \       u.username, u.email\r
+
+      FROM   COMPUTERS c\r
+
+      JOIN   USERS u ON c.assigned_user = u.user_id\r
+
+      WHERE  c.site_id       = 1\r
+
+      AND    c.computer_type = 'DESKTOP'\r
+
+      AND    c.status        = 'ACTIVE';"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 2 : Tickets ouverts par priorité\r
+
+      ### SANS index composé"
+    languageId: markdown
+  - kind: 2
+    value: ALTER INDEX idx_cergy_tickets_site_status INVISIBLE;
+    languageId: oracle-sql
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT t.priority,\r
+
+      \       COUNT(*)                       AS nb_tickets,\r
+
+      \       AVG(SYSDATE - t.creation_date) AS age_moyen_jours\r
+
+      FROM   TICKETS t\r
+
+      WHERE  t.site_id = 1\r
+
+      AND    t.status IN ('OPEN','IN_PROGRESS')\r
+
+      GROUP  BY t.priority\r
+
+      ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT t.priority,\r
+
+      \       COUNT(*)                       AS nb_tickets,\r
+
+      \       AVG(SYSDATE - t.creation_date) AS age_moyen_jours\r
+
+      FROM   TICKETS t\r
+
+      WHERE  t.site_id = 1\r
+
+      AND    t.status IN ('OPEN','IN_PROGRESS')\r
+
+      GROUP  BY t.priority\r
+
+      ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 2 : Tickets ouverts par priorité\r
+
+      ### AVEC index composé"
+    languageId: markdown
+  - kind: 2
+    value: ALTER INDEX idx_cergy_tickets_site_status VISIBLE;
+    languageId: oracle-sql
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT t.priority,\r
+
+      \       COUNT(*)                       AS nb_tickets,\r
+
+      \       AVG(SYSDATE - t.creation_date) AS age_moyen_jours\r
+
+      FROM   TICKETS t\r
+
+      WHERE  t.site_id = 1\r
+
+      AND    t.status IN ('OPEN','IN_PROGRESS')\r
+
+      GROUP  BY t.priority\r
+
+      ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT t.priority,\r
+
+      \       COUNT(*)                       AS nb_tickets,\r
+
+      \       AVG(SYSDATE - t.creation_date) AS age_moyen_jours\r
+
+      FROM   TICKETS t\r
+
+      WHERE  t.site_id = 1\r
+
+      AND    t.status IN ('OPEN','IN_PROGRESS')\r
+
+      GROUP  BY t.priority\r
+
+      ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 3 : Historique d'affectation d'un ordinateur\r
+
+      ### Test index sur HISTO_AFFECTATION"
+    languageId: markdown
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT h.histo_id,\r
+
+      \       c.inventory_number,\r
+
+      \       u.username,\r
+
+      \       h.date_debut,\r
+
+      \       h.date_fin\r
+
+      FROM   HISTO_AFFECTATION h\r
+
+      JOIN   COMPUTERS c ON h.computer_id = c.computer_id\r
+
+      JOIN   USERS     u ON h.user_id     = u.user_id\r
+
+      WHERE  h.computer_id = 1010\r
+
+      ORDER  BY h.date_debut DESC;\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT h.histo_id,\r
+
+      \       c.inventory_number,\r
+
+      \       u.username,\r
+
+      \       h.date_debut,\r
+
+      \       h.date_fin\r
+
+      FROM   HISTO_AFFECTATION h\r
+
+      JOIN   COMPUTERS c ON h.computer_id = c.computer_id\r
+
+      JOIN   USERS     u ON h.user_id     = u.user_id\r
+
+      WHERE  h.computer_id = 1010\r
+
+      ORDER  BY h.date_debut DESC;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 4 : Jointure lourde Computers + Tickets + Users"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT c.computer_name,\r
+
+      \       u.username,\r
+
+      \       COUNT(t.ticket_id)                                    AS
+      nb_tickets_total,\r
+
+      \       SUM(CASE WHEN t.status = 'OPEN'   THEN 1 ELSE 0 END) AS nb_open,\r
+
+      \       SUM(CASE WHEN t.status = 'CLOSED' THEN 1 ELSE 0 END) AS
+      nb_closed,\r
+
+      \       MAX(t.creation_date)                                  AS
+      dernier_ticket\r
+
+      FROM   COMPUTERS c\r
+
+      JOIN   USERS     u ON c.assigned_user = u.user_id\r
+
+      JOIN   TICKETS   t ON t.computer_id   = c.computer_id\r
+
+      WHERE  c.site_id = 1\r
+
+      GROUP  BY c.computer_name, u.username\r
+
+      HAVING COUNT(t.ticket_id) > 5\r
+
+      ORDER  BY nb_open DESC;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 5 : Fonctions PL/SQL\r
+
+      ### Tickets ouverts par technicien + matériels actifs du site"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT u.username,\r
+
+      \       nb_tickets_ouverts(u.user_id) AS tickets_ouverts,\r
+
+      \       nb_materiel_actif(u.site_id)  AS materiels_actifs_site\r
+
+      FROM   USERS u\r
+
+      WHERE  u.role_id = 2\r
+
+      AND    u.site_id = 1\r
+
+      ORDER  BY tickets_ouverts DESC;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Requête 6 : Rapport curseur par priorité"
+    languageId: markdown
+  - kind: 2
+    value: "SET SERVEROUTPUT ON;\r
+
+      EXEC rapport_tickets_priorite;"
+    languageId: oracle-sql

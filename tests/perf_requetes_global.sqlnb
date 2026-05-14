@@ -1,0 +1,151 @@
+cells:
+  - kind: 1
+    value: "# Tests BDDR - GLPI CY Tech - Global\r
+
+      \r
+
+      Ce notebook teste les vues globales et la base de données répartie
+      Cergy/Pau.\r
+
+      \r
+
+      **Connexion : GLPI_GLOBAL**\r\n"
+    languageId: markdown
+  - kind: 1
+    value: "## Test 1 : Vérification des database links"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT 'CERGY OK' AS statut FROM DUAL@cergy_link\r
+
+      UNION ALL\r
+
+      SELECT 'PAU OK' FROM DUAL@pau_link;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 2 : Comptage rapide par site"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT 'CERGY' AS site, COUNT(*) AS nb_users     FROM USERS@cergy_link\r
+
+      UNION ALL\r
+
+      SELECT 'PAU',           COUNT(*)                 FROM USERS@pau_link;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT 'CERGY' AS site, COUNT(*) AS nb_computers FROM
+      COMPUTERS@cergy_link\r
+
+      UNION ALL\r
+
+      SELECT 'PAU',           COUNT(*)                 FROM COMPUTERS@pau_link;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT 'CERGY' AS site, COUNT(*) AS nb_tickets   FROM
+      TICKETS@cergy_link\r
+
+      UNION ALL\r
+
+      SELECT 'PAU',           COUNT(*)                 FROM TICKETS@pau_link;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 3 : Vue V_ALL_USERS"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT site, role_id, COUNT(*) AS nb_users\r
+
+      FROM   V_ALL_USERS\r
+
+      GROUP  BY site, role_id\r
+
+      ORDER  BY site, role_id;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 4 : Vue V_ALL_COMPUTERS"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT site, computer_type, status, COUNT(*) AS nb\r
+
+      FROM   V_ALL_COMPUTERS\r
+
+      GROUP  BY site, computer_type, status\r
+
+      ORDER  BY site, computer_type, status;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 5 : Vue V_ALL_TICKETS"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT site, priority, status, COUNT(*) AS nb_tickets\r
+
+      FROM   V_ALL_TICKETS\r
+
+      GROUP  BY site, priority, status\r
+
+      ORDER  BY site, priority, status;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 6 : Vue V_ALL_EQUIPEMENTS"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT site, equip_type, COUNT(*) AS nb\r
+
+      FROM   V_ALL_EQUIPEMENTS\r
+
+      GROUP  BY site, equip_type\r
+
+      ORDER  BY site, equip_type;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 7 : Dashboard Global\r
+
+      ### Vision consolidée Cergy + Pau"
+    languageId: markdown
+  - kind: 2
+    value: SELECT * FROM V_DASHBOARD_GLOBAL;
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 8 : Tickets ouverts CRITICAL sur les deux sites"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT site, COUNT(*) AS nb_tickets_critiques\r
+
+      FROM   V_ALL_TICKETS\r
+
+      WHERE  priority = 'CRITICAL'\r
+
+      AND    status   = 'OPEN'\r
+
+      GROUP  BY site;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 9 : Historique affectations global"
+    languageId: markdown
+  - kind: 2
+    value: "SELECT site, COUNT(*) AS nb_affectations,\r
+
+      \       SUM(CASE WHEN date_fin IS NULL THEN 1 ELSE 0 END) AS en_cours\r
+
+      FROM   V_ALL_HISTO\r
+
+      GROUP  BY site;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Test 10 : EXPLAIN PLAN vue globale BDDR"
+    languageId: markdown
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT site, priority, COUNT(*) AS nb_tickets\r
+
+      FROM   V_ALL_TICKETS\r
+
+      WHERE  status = 'OPEN'\r
+
+      GROUP  BY site, priority\r
+
+      ORDER  BY site, priority;\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql

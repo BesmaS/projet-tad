@@ -100,3 +100,119 @@ cells:
 
       FROM SYSTEM.PLAN_TABLE$;"
     languageId: oracle-sql
+  - kind: 2
+    value: SELECT table_name FROM user_tables ORDER BY table_name;
+    languageId: oracle-sql
+  - kind: 2
+    value: "SET SERVEROUTPUT ON;\r
+
+      EXEC generate_all_data_cergy(500, 300, 5000);"
+    languageId: oracle-sql
+  - kind: 2
+    value: ""
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT tablespace_name FROM dba_tablespaces \r
+
+      WHERE tablespace_name IN
+      ('TS_CERGY_DATA','TS_PAU_DATA','TS_INDEX','TS_HISTO');"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT object_name, status FROM user_objects \r
+
+      WHERE object_type = 'PROCEDURE';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT object_name, status FROM user_objects \r
+
+      WHERE object_name = 'GENERATE_ALL_DATA_CERGY';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT column_name FROM user_tab_columns \r
+
+      WHERE table_name = 'COMPUTERS' \r
+
+      ORDER BY column_id;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "DROP TABLE HISTO_AFFECTATION    CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE COMPUTER_SOFTWARES   CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE TICKETS               CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE COMPUTERS             CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE SOFTWARES             CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE EQUIPEMENT_RESEAU     CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE NETWORKS              CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE VLAN                  CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE USERS                 CASCADE CONSTRAINTS PURGE;\r
+
+      DROP TABLE LOCATIONS             CASCADE CONSTRAINTS PURGE;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Colonnes de COMPUTERS\r
+
+      SELECT column_name FROM user_tab_columns \r
+
+      WHERE table_name = 'COMPUTERS' \r
+
+      ORDER BY column_id;\r
+
+      \r
+
+      -- Status des procédures\r
+
+      SELECT object_name, status FROM user_objects \r
+
+      WHERE object_type = 'PROCEDURE';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SELECT line, position, text FROM user_errors \r
+
+      WHERE name = 'GENERATE_ALL_DATA_CERGY';"
+    languageId: oracle-sql
+  - kind: 2
+    value: ALTER PROCEDURE generate_all_data_cergy COMPILE;
+    languageId: oracle-sql
+  - kind: 2
+    value: "ALTER TRIGGER trg_cergy_ticket_no_delete_open DISABLE;\r
+
+      \r
+
+      DELETE FROM HISTO_AFFECTATION;\r
+
+      DELETE FROM COMPUTER_SOFTWARES;\r
+
+      DELETE FROM TICKETS;\r
+
+      DELETE FROM COMPUTERS;\r
+
+      DELETE FROM EQUIPEMENT_RESEAU;\r
+
+      DELETE FROM NETWORKS;\r
+
+      DELETE FROM SOFTWARES;\r
+
+      DELETE FROM VLAN;\r
+
+      DELETE FROM USERS;\r
+
+      DELETE FROM LOCATIONS;\r
+
+      COMMIT;\r
+
+      \r
+
+      ALTER TRIGGER trg_cergy_ticket_no_delete_open ENABLE;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "SET SERVEROUTPUT ON;\r
+
+      EXEC generate_all_data_cergy(500, 300, 5000);"
+    languageId: oracle-sql
