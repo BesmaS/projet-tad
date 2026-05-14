@@ -1,0 +1,25 @@
+-- =============================================================
+-- CLEANUP PAU
+-- A executer sur glpi_pau AVANT les nouveaux fichiers
+-- =============================================================
+
+DROP TABLE HISTO_AFFECTATION    CASCADE CONSTRAINTS PURGE;
+DROP TABLE COMPUTER_SOFTWARES   CASCADE CONSTRAINTS PURGE;
+DROP TABLE TICKETS               CASCADE CONSTRAINTS PURGE;
+DROP TABLE COMPUTERS             CASCADE CONSTRAINTS PURGE;
+DROP TABLE SOFTWARES             CASCADE CONSTRAINTS PURGE;
+DROP TABLE EQUIPEMENT_RESEAU     CASCADE CONSTRAINTS PURGE;
+DROP TABLE NETWORKS              CASCADE CONSTRAINTS PURGE;
+DROP TABLE VLAN                  CASCADE CONSTRAINTS PURGE;
+DROP TABLE USERS                 CASCADE CONSTRAINTS PURGE;
+DROP TABLE LOCATIONS             CASCADE CONSTRAINTS PURGE;
+
+DROP PROCEDURE add_ticket;
+DROP PROCEDURE rapport_tickets_priorite;
+DROP PROCEDURE generate_all_data_pau;
+DROP FUNCTION  nb_tickets_ouverts;
+DROP FUNCTION  nb_materiel_actif;
+
+DROP CLUSTER pau_cluster_comp_ticket;
+
+COMMIT;

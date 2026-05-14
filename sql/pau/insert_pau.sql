@@ -1,71 +1,68 @@
-INSERT INTO USERS VALUES (
-    1,
-    'admin.pau',
-    'Admin',
-    'Pau',
-    'admin.pau@cy-tech.fr',
-    1,
-    2
-);
+-- =============================================================
+-- DONNEES INITIALES PAU
+-- A executer sur glpi_pau
+-- =============================================================
 
-INSERT INTO USERS VALUES (
-    2,
-    'tech.pau',
-    'Tech',
-    'Pau',
-    'tech.pau@cy-tech.fr',
-    2,
-    2
-);
+-- LOCATIONS
+INSERT INTO LOCATIONS VALUES (1, 'Batiment-C', 'Salle-101', 'RDC',  2);
+INSERT INTO LOCATIONS VALUES (2, 'Batiment-C', 'Salle-201', '1er',  2);
+INSERT INTO LOCATIONS VALUES (3, 'Batiment-D', 'Salle-101', 'RDC',  2);
+INSERT INTO LOCATIONS VALUES (4, 'Batiment-D', 'Salle-301', '2eme', 2);
 
-INSERT INTO USERS VALUES (
-    3,
-    'etudiant.pau',
-    'Etudiant',
-    'Pau',
-    'etudiant.pau@cy-tech.fr',
-    3,
-    2
-);
+-- USERS
+INSERT INTO USERS VALUES (1, 'admin.pau',    'Admin',   'Pau', 'admin.pau@cy-tech.fr',    1, 2, 1, 'ACTIF');
+INSERT INTO USERS VALUES (2, 'tech.pau',     'Tech',    'Pau', 'tech.pau@cy-tech.fr',     2, 2, 1, 'ACTIF');
+INSERT INTO USERS VALUES (3, 'etudiant.pau', 'Etudiant','Pau', 'etudiant.pau@cy-tech.fr', 3, 2, 2, 'ACTIF');
 
-INSERT INTO COMPUTERS VALUES (
-    1,
-    'PAU-PC-001',
-    'PC-PAU-001',
-    'SN-PAU-001',
-    'HP',
-    'EliteDesk',
-    TO_DATE('2024-02-15','YYYY-MM-DD'),
-    'ACTIVE',
-    3
-);
+-- VLAN
+INSERT INTO VLAN VALUES (1, 10, 'VLAN-ADMIN-PAU',    2);
+INSERT INTO VLAN VALUES (2, 20, 'VLAN-ETUDIANT-PAU', 2);
+INSERT INTO VLAN VALUES (3, 30, 'VLAN-SERVEURS-PAU', 2);
 
-INSERT INTO SOFTWARES VALUES (
-    1,
-    'Oracle Database',
-    '21c',
-    'Enterprise'
-);
+-- NETWORKS
+INSERT INTO NETWORKS VALUES (1, 'Pau Admin Network',   '192.168.2.0/24',  '192.168.2.1',  1, 2);
+INSERT INTO NETWORKS VALUES (2, 'Pau Student Network', '192.168.20.0/24', '192.168.20.1', 2, 2);
+INSERT INTO NETWORKS VALUES (3, 'Pau Server Network',  '10.2.0.0/24',     '10.2.0.1',     3, 2);
 
-INSERT INTO COMPUTER_SOFTWARES VALUES (1, 1);
+-- EQUIPEMENTS RESEAU
+INSERT INTO EQUIPEMENT_RESEAU VALUES (1, 'SW-PAU-CORE-01', 'SWITCH',   'HP',      'ProCurve 2530', '10.2.0.1',   1, 2);
+INSERT INTO EQUIPEMENT_RESEAU VALUES (2, 'RT-PAU-MAIN-01', 'ROUTER',   'Cisco',   'ISR 1100',      '10.2.0.2',   1, 2);
+INSERT INTO EQUIPEMENT_RESEAU VALUES (3, 'AP-PAU-C101',    'WIFI_AP',  'TP-Link', 'EAP245',        '10.2.1.1',   1, 2);
+INSERT INTO EQUIPEMENT_RESEAU VALUES (4, 'FW-PAU-01',      'FIREWALL', 'Fortinet','FortiGate 40F', '10.2.0.254', 1, 2);
 
-INSERT INTO NETWORKS VALUES (
-    1,
-    'Pau Main Network',
-    '192.168.2.0/24',
-    20
-);
+-- COMPUTERS
+INSERT INTO COMPUTERS VALUES (1, 'PAU-PC-001', 'PC-PAU-01',   'SN-PAU-001',
+    'HP',     'EliteDesk', 'DESKTOP',
+    TO_DATE('2024-02-15','YYYY-MM-DD'), 'ACTIVE', 3, 2, 2);
 
-INSERT INTO TICKETS VALUES (
-    1,
-    'Network issue',
-    'Wi-Fi connection problem',
-    'MEDIUM',
-    'OPEN',
-    SYSDATE,
-    3,
-    2,
-    1
-);
+INSERT INTO COMPUTERS VALUES (2, 'PAU-PC-002', 'PC-TECH-PAU', 'SN-PAU-002',
+    'Dell',   'OptiPlex',  'DESKTOP',
+    TO_DATE('2023-09-01','YYYY-MM-DD'), 'ACTIVE', 2, 1, 2);
+
+INSERT INTO COMPUTERS VALUES (3, 'PAU-LT-001', 'LAPTOP-PAU',  'SN-PAU-003',
+    'Lenovo', 'IdeaPad',   'LAPTOP',
+    TO_DATE('2024-04-10','YYYY-MM-DD'), 'ACTIVE', 3, 3, 2);
+
+-- SOFTWARES
+INSERT INTO SOFTWARES VALUES (1, 'Oracle Database', '21c',  'Enterprise', 'Oracle');
+INSERT INTO SOFTWARES VALUES (2, 'Microsoft Office','2021', 'Volume',     'Microsoft');
+INSERT INTO SOFTWARES VALUES (3, 'Antivirus Pro',   '5.2',  'Entreprise', 'Symantec');
+
+INSERT INTO COMPUTER_SOFTWARES VALUES (1, 1, SYSDATE);
+INSERT INTO COMPUTER_SOFTWARES VALUES (1, 2, SYSDATE);
+INSERT INTO COMPUTER_SOFTWARES VALUES (2, 2, SYSDATE);
+INSERT INTO COMPUTER_SOFTWARES VALUES (2, 3, SYSDATE);
+INSERT INTO COMPUTER_SOFTWARES VALUES (3, 2, SYSDATE);
+
+-- TICKETS
+INSERT INTO TICKETS VALUES (1, 'Network issue',   'Wi-Fi connection problem', 'MEDIUM',   'OPEN',        SYSDATE,    NULL,      3, 2, 1, 2);
+INSERT INTO TICKETS VALUES (2, 'RAM too slow',    'Computer very slow',       'HIGH',     'IN_PROGRESS', SYSDATE-3,  NULL,      3, 2, 1, 2);
+INSERT INTO TICKETS VALUES (3, 'Mouse not found', 'USB mouse not detected',   'LOW',      'CLOSED',      SYSDATE-10, SYSDATE-2, 3, 2, 2, 2);
+INSERT INTO TICKETS VALUES (4, 'No VPN access',   'Cannot connect to VPN',    'CRITICAL', 'OPEN',        SYSDATE-1,  NULL,      3, 2, 3, 2);
+
+-- HISTO AFFECTATION
+INSERT INTO HISTO_AFFECTATION VALUES (1, 1, 3, TO_DATE('2024-02-15','YYYY-MM-DD'), NULL, 2);
+INSERT INTO HISTO_AFFECTATION VALUES (2, 2, 2, TO_DATE('2023-09-01','YYYY-MM-DD'), NULL, 2);
+INSERT INTO HISTO_AFFECTATION VALUES (3, 3, 3, TO_DATE('2024-04-10','YYYY-MM-DD'), NULL, 2);
 
 COMMIT;

@@ -1,12 +1,22 @@
+-- =============================================================
+-- DATABASE LINKS
+-- A executer sur GLPI_GLOBAL (glpi_admin)
+-- =============================================================
+
 CREATE DATABASE LINK cergy_link
-CONNECT TO glpi_cergy IDENTIFIED BY glpi123
-USING '(DESCRIPTION=
-  (ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))
-  (CONNECT_DATA=(SERVICE_NAME=xepdb1))
-)';
+    CONNECT TO glpi_cergy IDENTIFIED BY glpi123
+    USING '(DESCRIPTION=
+        (ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))
+        (CONNECT_DATA=(SERVICE_NAME=xepdb1))
+    )';
+
 CREATE DATABASE LINK pau_link
-CONNECT TO glpi_pau IDENTIFIED BY glpi123
-USING '(DESCRIPTION=
-  (ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))
-  (CONNECT_DATA=(SERVICE_NAME=xepdb1))
-)';
+    CONNECT TO GLPI_PAU IDENTIFIED BY glpi123
+    USING '(DESCRIPTION=
+        (ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))
+        (CONNECT_DATA=(SERVICE_NAME=xepdb1))
+    )';
+
+-- Test des liens
+-- SELECT 'CERGY OK' FROM DUAL@cergy_link;
+-- SELECT 'PAU OK'   FROM DUAL@pau_link;

@@ -1,59 +1,149 @@
--- =========================
--- BENCHMARK 1 : tickets ouverts
--- À lancer avec GLPI_CERGY ou GLPI_PAU
--- =========================
+-- =============================================================
+-- TESTS DE PERFORMANCE ET PLANS DE REQUETES
+-- A executer apres generation des donnees massives
+-- =============================================================
 
-SELECT *
-FROM TICKETS
-WHERE status = 'OPEN';
+SET SERVEROUTPUT ON;
+SET TIMING ON;
 
+-- =============================================================
+-- REQUETE 1 : Materiels ACTIFS de Cergy par type
+-- Test de l index compose idx_cergy_computers_site_type_status
+-- =============================================================
 
--- =========================
--- BENCHMARK 2 : recherche utilisateur par email
--- À lancer avec GLPI_CERGY ou GLPI_PAU
--- =========================
+-- SANS index (on le rend invisible)
+ALTER INDEX idx_cergy_computers_site_type_status INVISIBLE;
 
-SELECT *
-FROM USERS
-WHERE email = 'besma.saidi@cy-tech.fr';
+EXPLAIN PLAN FOR
+SELECT c.computer_id, c.inventory_number, c.computer_name,
+       c.brand, c.model, c.computer_type, c.status,
+       u.username, u.email
+FROM   COMPUTERS c
+JOIN   USERS u ON c.assigned_user = u.user_id
+WHERE  c.site_id       = 1
+AND    c.computer_type = 'DESKTOP'
+AND    c.status        = 'ACTIVE';
 
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT => 'ALL'));
 
--- =========================
--- BENCHMARK 3 : jointure tickets + utilisateurs
--- À lancer avec GLPI_CERGY ou GLPI_PAU
--- =========================
+-- AVEC index
+ALTER INDEX idx_cergy_computers_site_type_status VISIBLE;
 
-SELECT t.ticket_id, t.title, t.status, u.username
-FROM TICKETS t
-JOIN USERS u
-ON t.created_by = u.user_id;
+EXPLAIN PLAN FOR
+SELECT c.computer_id, c.inventory_number, c.computer_name,
+       c.brand, c.model, c.computer_type, c.status,
+       u.username, u.email
+FROM   COMPUTERS c
+JOIN   USERS u ON c.assigned_user = u.user_id
+WHERE  c.site_id       = 1
+AND    c.computer_type = 'DESKTOP'
+AND    c.status        = 'ACTIVE';
 
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT => 'ALL'));
 
--- =========================
--- BENCHMARK 4 : statistiques tickets
--- À lancer avec GLPI_CERGY ou GLPI_PAU
--- =========================
+-- =============================================================
+-- REQUETE 2 : Tickets ouverts par priorite sur Cergy
+-- Test de l index compose idx_cergy_tickets_site_status
+-- =============================================================
 
-SELECT status, COUNT(*) AS nb_tickets
-FROM TICKETS
-GROUP BY status;
+ALTER INDEX idx_cergy_tickets_site_status INVISIBLE;
 
+EXPLAIN PLAN FOR
+SELECT t.priority,
+       COUNT(*)                          AS nb_tickets,
+       AVG(SYSDATE - t.creation_date)    AS age_moyen_jours
+FROM   TICKETS t
+WHERE  t.site_id = 1
+AND    t.status IN ('OPEN','IN_PROGRESS')
+GROUP  BY t.priority
+ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);
 
--- =========================
--- BENCHMARK 5 : vue globale multi-sites
--- À lancer avec GLPI_GLOBAL
--- =========================
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT => 'ALL'));
 
-SELECT *
-FROM V_ALL_TICKETS
-WHERE status = 'OPEN';
+ALTER INDEX idx_cergy_tickets_site_status VISIBLE;
 
+EXPLAIN PLAN FOR
+SELECT t.priority,
+       COUNT(*)                          AS nb_tickets,
+       AVG(SYSDATE - t.creation_date)    AS age_moyen_jours
+FROM   TICKETS t
+WHERE  t.site_id = 1
+AND    t.status IN ('OPEN','IN_PROGRESS')
+GROUP  BY t.priority
+ORDER  BY DECODE(t.priority,'CRITICAL',1,'HIGH',2,'MEDIUM',3,'LOW',4);
 
--- =========================
--- BENCHMARK 6 : nombre de tickets par site
--- À lancer avec GLPI_GLOBAL
--- =========================
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT => 'ALL'));
 
-SELECT site, COUNT(*) AS nb_tickets
-FROM V_ALL_TICKETS
-GROUP BY site;
+/*-- =============================================================
+-- REQUETE 3 : Vision globale Cergy + Pau via BDDR
+-- Test de la vue V_ALL_TICKETS avec UNION ALL
+-- arche uniqueent piur glpi_global
+-- =============================================================
+
+EXPLAIN PLAN FOR
+SELECT site, priority, COUNT(*) AS nb_tickets
+FROM   V_ALL_TICKETS
+WHERE  status = 'OPEN'
+GROUP  BY site, priority
+ORDER  BY site, priority;
+
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT => 'ALL'));
+*/
+-- =============================================================
+-- REQUETE 4 : Historique d affectation d un ordinateur
+-- Test des index sur HISTO_AFFECTATION
+-- =============================================================
+
+EXPLAIN PLAN FOR
+SELECT h.histo_id,
+       c.inventory_number,
+       u.username,
+       h.date_debut,
+       h.date_fin
+FROM   HISTO_AFFECTATION h
+JOIN   COMPUTERS c ON h.computer_id = c.computer_id
+JOIN   USERS     u ON h.user_id     = u.user_id
+WHERE  h.computer_id = 1010
+ORDER  BY h.date_debut DESC;
+
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT => 'ALL'));
+
+-- =============================================================
+-- REQUETE 5 : Utilisation des fonctions PL/SQL
+-- Tickets ouverts par technicien + materiels actifs du site
+-- =============================================================
+
+SELECT u.username,
+       nb_tickets_ouverts(u.user_id)  AS tickets_ouverts,
+       nb_materiel_actif(u.site_id)   AS materiels_actifs_site
+FROM   USERS u
+WHERE  u.role_id = 2
+AND    u.site_id = 1
+ORDER  BY tickets_ouverts DESC;
+
+-- =============================================================
+-- REQUETE 6 : Jointure lourde materiels + tickets + users
+-- Mesure du temps de reponse avec SET TIMING ON
+-- =============================================================
+
+SELECT c.computer_name,
+       u.username,
+       COUNT(t.ticket_id)                                        AS nb_tickets_total,
+       SUM(CASE WHEN t.status = 'OPEN' THEN 1 ELSE 0 END)       AS nb_open,
+       SUM(CASE WHEN t.status = 'CLOSED' THEN 1 ELSE 0 END)     AS nb_closed,
+       MAX(t.creation_date)                                      AS dernier_ticket
+FROM   COMPUTERS c
+JOIN   USERS     u ON c.assigned_user = u.user_id
+JOIN   TICKETS   t ON t.computer_id   = c.computer_id
+WHERE  c.site_id = 1
+GROUP  BY c.computer_name, u.username
+HAVING COUNT(t.ticket_id) > 5
+ORDER  BY nb_open DESC;
+
+-- =============================================================
+-- APPEL DU RAPPORT CURSEUR
+-- =============================================================
+
+EXEC rapport_tickets_priorite;
+
+SET TIMING OFF;

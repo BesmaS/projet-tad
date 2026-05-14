@@ -1,14 +1,13 @@
--- =========================
--- INSERT SITES
--- =========================
+-- =============================================================
+-- DONNEES INITIALES GLOBALES
+-- A executer sur GLPI_GLOBAL
+-- =============================================================
 
-INSERT INTO SITES VALUES (1, 'CY Tech Cergy', 'Cergy');
-INSERT INTO SITES VALUES (2, 'CY Tech Pau', 'Pau');
+INSERT INTO SITES VALUES (1, 'CY Tech Cergy', 'Cergy', 'O');
+INSERT INTO SITES VALUES (2, 'CY Tech Pau',   'Pau',   'O');
 
--- =========================
--- INSERT ROLES
--- =========================
+INSERT INTO ROLES VALUES (1, 'ADMIN_GLOBAL', 'Administrateur global du parc informatique');
+INSERT INTO ROLES VALUES (2, 'TECHNICIAN',   'Technicien informatique local');
+INSERT INTO ROLES VALUES (3, 'USER',         'Utilisateur ou etudiant');
 
-INSERT INTO ROLES VALUES (1, 'Administrator');
-INSERT INTO ROLES VALUES (2, 'Technician');
-INSERT INTO ROLES VALUES (3, 'Student');
+COMMIT;
