@@ -2,8 +2,6 @@
 -- CLUSTER ORACLE - CERGY
 -- Regroupe physiquement COMPUTERS et TICKETS par computer_id
 -- dans les memes blocs disque
--- → accelere "donner tous les tickets d'un PC"
--- A executer sur glpi_cergy AVANT de creer les tables
 -- =============================================================
 
 CREATE CLUSTER cergy_cluster_comp_ticket (computer_id NUMBER)

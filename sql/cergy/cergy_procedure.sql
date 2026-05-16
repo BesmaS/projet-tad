@@ -1,13 +1,8 @@
 -- =============================================================
--- PROCEDURES ET FONCTIONS CERGY
--- A executer sur glpi_cergy
--- =============================================================
-
--- =============================================================
 -- FONCTIONS
 -- =============================================================
 
--- Fonction 1 : retourne le nombre de tickets ouverts d un user
+-- retourne le nombre de tickets ouverts d un user
 CREATE OR REPLACE FUNCTION nb_tickets_ouverts (
     p_user_id NUMBER
 ) RETURN NUMBER
@@ -23,7 +18,7 @@ BEGIN
 END;
 /
 
--- Fonction 2 : retourne le nombre de materiels actifs sur un site
+-- retourne nb de materiels actifs sur un site
 CREATE OR REPLACE FUNCTION nb_materiel_actif (
     p_site_id NUMBER
 ) RETURN NUMBER
@@ -43,7 +38,7 @@ END;
 -- PROCEDURES
 -- =============================================================
 
--- Procedure 1 : ajouter un ticket
+-- ajouter un ticket
 -- Utilise un curseur pour verifier que le technicien existe
 -- et a bien le role_id = 2 avant d inserer
 CREATE OR REPLACE PROCEDURE add_ticket (
@@ -91,7 +86,7 @@ BEGIN
 END;
 /
 
--- Procedure 2 : rapport des tickets par priorite
+-- rapport des tickets par priorite
 -- Utilise un curseur explicite avec OPEN / FETCH / CLOSE
 CREATE OR REPLACE PROCEDURE rapport_tickets_priorite
 IS
