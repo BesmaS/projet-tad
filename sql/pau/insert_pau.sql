@@ -1,8 +1,3 @@
--- =============================================================
--- DONNEES INITIALES PAU
--- A executer sur glpi_pau
--- =============================================================
-
 -- LOCATIONS
 INSERT INTO LOCATIONS VALUES (1, 'Batiment-C', 'Salle-101', 'RDC',  2);
 INSERT INTO LOCATIONS VALUES (2, 'Batiment-C', 'Salle-201', '1er',  2);

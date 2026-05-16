@@ -1,0 +1,314 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="x36H1WukrDkpVIZJP3D4" name="Page-1">
+    <mxGraphModel dx="2402" dy="1580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#0D1B2A;" value="Architecture BDDR — GLPI CY Tech&amp;nbsp;" vertex="1">
+          <mxGeometry height="40" width="900" x="370" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F3F4;strokeColor=#BDC3C7;strokeWidth=3;dashed=1;dashPattern=8 4;arcSize=5;" value="" vertex="1">
+          <mxGeometry height="1020" width="1550" x="30" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xe_lbl" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=14;fontStyle=3;fontColor=#7F8C8D;" value="Instance Oracle XE (xepdb1)" vertex="1">
+          <mxGeometry height="30" width="350" x="150" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDFEFE;strokeColor=#E74C3C;strokeWidth=2;dashed=1;arcSize=8;" value="" vertex="1">
+          <mxGeometry height="100" width="440" x="600" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_lbl" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#E74C3C;" value="SYS / SYSDBA" vertex="1">
+          <mxGeometry height="25" width="420" x="625" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="sys1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#555;" value="CREATE TABLESPACE TS_CERGY_DATA / TS_PAU_DATA / TS_INDEX / TS_HISTO" vertex="1">
+          <mxGeometry height="25" width="410" x="615" y="143" as="geometry" />
+        </mxCell>
+        <mxCell id="sys2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#555;" value="CREATE USER glpi_cergy / glpi_pau / glpi_global / glpi_readonly + GRANT" vertex="1">
+          <mxGeometry height="25" width="410" x="615" y="168" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF5FB;strokeColor=#1B4F72;strokeWidth=3;arcSize=5;" value="" vertex="1">
+          <mxGeometry height="790" width="440" x="120" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_hdr" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#1B4F72;" value="glpi_cergy" vertex="1">
+          <mxGeometry height="30" width="440" x="120" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_ts" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#2980B9;" value="Tablespace : TS_CERGY_DATA" vertex="1">
+          <mxGeometry height="22" width="440" x="120" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="ct1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B4F72;fontColor=#ffffff;strokeColor=#1B4F72;fontSize=12;fontStyle=1;" value="USERS (5 000)" vertex="1">
+          <mxGeometry height="40" width="200" x="140" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="ct2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="LOCATIONS (14)" vertex="1">
+          <mxGeometry height="40" width="200" x="350" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="ct3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B4F72;fontColor=#ffffff;strokeColor=#1B4F72;fontSize=12;fontStyle=1;" value="COMPUTERS (1 000)" vertex="1">
+          <mxGeometry height="40" width="200" x="140" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ct4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="VLAN (20)" vertex="1">
+          <mxGeometry height="40" width="200" x="350" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ct5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C0392B;fontColor=#ffffff;strokeColor=#C0392B;fontSize=12;fontStyle=1;" value="TICKETS (50 000)" vertex="1">
+          <mxGeometry height="40" width="200" x="140" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="ct6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="NETWORKS (13)" vertex="1">
+          <mxGeometry height="40" width="200" x="350" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="ct7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8E44AD;fontColor=#ffffff;strokeColor=#8E44AD;fontSize=12;fontStyle=1;" value="SOFTWARES" vertex="1">
+          <mxGeometry height="40" width="200" x="140" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="ct8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="EQUIP_RESEAU (30)" vertex="1">
+          <mxGeometry height="40" width="200" x="350" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="ct9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7F8C8D;fontColor=#ffffff;strokeColor=#7F8C8D;fontSize=12;fontStyle=1;" value="HISTO_AFFECTATION (100)" vertex="1">
+          <mxGeometry height="40" width="200" x="140" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="ct10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8E44AD;fontColor=#ffffff;strokeColor=#8E44AD;fontSize=12;fontStyle=1;" value="COMP_SOFTWARES" vertex="1">
+          <mxGeometry height="40" width="200" x="350" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_plsql_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D6EAF8;strokeColor=#2980B9;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="180" width="410" x="140" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_plsql_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1B4F72;" value="PL/SQL Cergy" vertex="1">
+          <mxGeometry height="22" width="410" x="140" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="cp1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ trg_cergy_ticket_creation" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="628" as="geometry" />
+        </mxCell>
+        <mxCell id="cp2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ trg_cergy_affectation_histo" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="cp3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ trg_cergy_ticket_no_delete_open" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="672" as="geometry" />
+        </mxCell>
+        <mxCell id="cp4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ FUNCTION nb_tickets_ouverts(user_id)" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="694" as="geometry" />
+        </mxCell>
+        <mxCell id="cp5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ FUNCTION nb_materiel_actif(site_id)" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="716" as="geometry" />
+        </mxCell>
+        <mxCell id="cp6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ PROCEDURE add_ticket (curseur technicien)" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="738" as="geometry" />
+        </mxCell>
+        <mxCell id="cp7" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ PROCEDURE rapport_tickets_priorite (OPEN/FETCH/CLOSE)" vertex="1">
+          <mxGeometry height="22" width="390" x="150" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_idx_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF5FB;strokeColor=#7D3C98;strokeWidth=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="90" width="410" x="140" y="795" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_idx_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#7D3C98;" value="Index (TS_INDEX)" vertex="1">
+          <mxGeometry height="22" width="410" x="140" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ci1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" value="idx_cergy_computers_site_type_status  |  idx_cergy_tickets_site_status" vertex="1">
+          <mxGeometry height="22" width="410" x="140" y="822" as="geometry" />
+        </mxCell>
+        <mxCell id="ci2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" value="idx_cergy_histo_computer  |  idx_cergy_vlan_site  |  + 9 autres" vertex="1">
+          <mxGeometry height="22" width="410" x="140" y="844" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_cluster" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5F5E3;strokeColor=#1E8449;strokeWidth=2;fontSize=11;fontStyle=1;" value="CLUSTER cergy_cluster_comp_ticket (COMPUTERS + TICKETS groupés par computer_id)" vertex="1">
+          <mxGeometry height="40" width="410" x="140" y="898" as="geometry" />
+        </mxCell>
+        <mxCell id="cergy_histo_ts" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#7F8C8D;" value="HISTO_AFFECTATION → TS_HISTO" vertex="1">
+          <mxGeometry height="22" width="410" x="140" y="948" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F8F5;strokeColor=#148A7A;strokeWidth=3;arcSize=5;" value="" vertex="1">
+          <mxGeometry height="790" width="380" x="1140" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_hdr" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#148A7A;" value="glpi_pau" vertex="1">
+          <mxGeometry height="30" width="380" x="1140" y="246" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_ts" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#148A7A;" value="Tablespace : TS_PAU_DATA" vertex="1">
+          <mxGeometry height="22" width="380" x="1140" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="pt1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B4F72;fontColor=#ffffff;strokeColor=#1B4F72;fontSize=12;fontStyle=1;" value="USERS (5 000)" vertex="1">
+          <mxGeometry height="40" width="165" x="1155" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="pt2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="LOCATIONS (14)" vertex="1">
+          <mxGeometry height="40" width="165" x="1340" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="pt3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B4F72;fontColor=#ffffff;strokeColor=#1B4F72;fontSize=12;fontStyle=1;" value="COMPUTERS (1 000)" vertex="1">
+          <mxGeometry height="40" width="165" x="1155" y="368" as="geometry" />
+        </mxCell>
+        <mxCell id="pt4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="VLAN (20)" vertex="1">
+          <mxGeometry height="40" width="165" x="1340" y="368" as="geometry" />
+        </mxCell>
+        <mxCell id="pt5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C0392B;fontColor=#ffffff;strokeColor=#C0392B;fontSize=12;fontStyle=1;" value="TICKETS (50 000)" vertex="1">
+          <mxGeometry height="40" width="165" x="1155" y="428" as="geometry" />
+        </mxCell>
+        <mxCell id="pt6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="NETWORKS (13)" vertex="1">
+          <mxGeometry height="40" width="165" x="1340" y="428" as="geometry" />
+        </mxCell>
+        <mxCell id="pt7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8E44AD;fontColor=#ffffff;strokeColor=#8E44AD;fontSize=12;fontStyle=1;" value="SOFTWARES" vertex="1">
+          <mxGeometry height="40" width="165" x="1155" y="488" as="geometry" />
+        </mxCell>
+        <mxCell id="pt8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#148A7A;fontColor=#ffffff;strokeColor=#148A7A;fontSize=12;fontStyle=1;" value="EQUIP_RESEAU (30)" vertex="1">
+          <mxGeometry height="40" width="165" x="1340" y="488" as="geometry" />
+        </mxCell>
+        <mxCell id="pt9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7F8C8D;fontColor=#ffffff;strokeColor=#7F8C8D;fontSize=12;fontStyle=1;" value="HISTO_AFFECTATION" vertex="1">
+          <mxGeometry height="40" width="165" x="1155" y="548" as="geometry" />
+        </mxCell>
+        <mxCell id="pt10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8E44AD;fontColor=#ffffff;strokeColor=#8E44AD;fontSize=12;fontStyle=1;" value="COMP_SOFTWARES" vertex="1">
+          <mxGeometry height="40" width="165" x="1340" y="548" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_plsql_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1F2EB;strokeColor=#148A7A;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="180" width="350" x="1155" y="608" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_plsql_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#148A7A;" value="PL/SQL Pau (miroir Cergy)" vertex="1">
+          <mxGeometry height="22" width="350" x="1155" y="613" as="geometry" />
+        </mxCell>
+        <mxCell id="pp1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ trg_pau_ticket_creation" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="636" as="geometry" />
+        </mxCell>
+        <mxCell id="pp2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ trg_pau_affectation_histo" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="658" as="geometry" />
+        </mxCell>
+        <mxCell id="pp3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ trg_pau_ticket_no_delete_open" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="pp4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ FUNCTION nb_tickets_ouverts / nb_materiel_actif" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="702" as="geometry" />
+        </mxCell>
+        <mxCell id="pp5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ PROCEDURE add_ticket (curseur)" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="724" as="geometry" />
+        </mxCell>
+        <mxCell id="pp6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ PROCEDURE rapport_tickets_priorite" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="746" as="geometry" />
+        </mxCell>
+        <mxCell id="pp7" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;spacingLeft=8;" value="▸ PROCEDURE generate_all_data_pau" vertex="1">
+          <mxGeometry height="22" width="330" x="1165" y="768" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_idx_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F8F5;strokeColor=#7D3C98;strokeWidth=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="90" width="350" x="1155" y="803" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_idx_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#7D3C98;" value="Index (TS_INDEX)" vertex="1">
+          <mxGeometry height="22" width="350" x="1155" y="808" as="geometry" />
+        </mxCell>
+        <mxCell id="pi1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" value="idx_pau_computers_site_type_status  |  idx_pau_tickets_site_status" vertex="1">
+          <mxGeometry height="22" width="350" x="1155" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="pi2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;" value="idx_pau_histo_computer  |  idx_pau_vlan_site  |  + 9 autres" vertex="1">
+          <mxGeometry height="22" width="350" x="1155" y="852" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_cluster" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5F5E3;strokeColor=#1E8449;strokeWidth=2;fontSize=11;fontStyle=1;" value="CLUSTER pau_cluster_comp_ticket (COMPUTERS + TICKETS)" vertex="1">
+          <mxGeometry height="40" width="350" x="1155" y="906" as="geometry" />
+        </mxCell>
+        <mxCell id="pau_histo_ts" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#7F8C8D;" value="HISTO_AFFECTATION → TS_HISTO" vertex="1">
+          <mxGeometry height="22" width="350" x="1155" y="956" as="geometry" />
+        </mxCell>
+        <mxCell id="global_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1B2A4A;strokeColor=#00C9A7;strokeWidth=3;arcSize=5;" value="" vertex="1">
+          <mxGeometry height="580" width="380" x="630" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="global_hdr" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fontColor=#00C9A7;" value="GLPI_GLOBAL" vertex="1">
+          <mxGeometry height="30" width="380" x="630" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="global_sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#7FB3D3;" value="(Vision consolidée multi-sites)" vertex="1">
+          <mxGeometry height="20" width="380" x="635" y="298" as="geometry" />
+        </mxCell>
+        <mxCell id="g_sites" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C3E50;fontColor=#ffffff;strokeColor=#7FB3D3;fontSize=12;fontStyle=1;" value="SITES" vertex="1">
+          <mxGeometry height="35" width="165" x="645" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="g_roles" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C3E50;fontColor=#ffffff;strokeColor=#7FB3D3;fontSize=12;fontStyle=1;" value="ROLES" vertex="1">
+          <mxGeometry height="35" width="165" x="830" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="g_dblinks_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A1628;strokeColor=#00C9A7;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="70" width="350" x="645" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="g_dblinks_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#00C9A7;" value="Database Links" vertex="1">
+          <mxGeometry height="20" width="350" x="645" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="g_dl1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#7FB3D3;" value="cergy_link → glpi_cergy@xepdb1" vertex="1">
+          <mxGeometry height="20" width="350" x="645" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="g_dl2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#7FB3D3;" value="pau_link → glpi_pau@xepdb1" vertex="1">
+          <mxGeometry height="20" width="350" x="645" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="g_views_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A1628;strokeColor=#2980B9;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="160" width="350" x="645" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="g_views_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#2980B9;" value="Vues Globales (UNION ALL)" vertex="1">
+          <mxGeometry height="20" width="350" x="645" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="gv1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="V_ALL_USERS" vertex="1">
+          <mxGeometry height="22" width="175" x="645" y="486" as="geometry" />
+        </mxCell>
+        <mxCell id="gv2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="V_ALL_COMPUTERS" vertex="1">
+          <mxGeometry height="22" width="175" x="820" y="486" as="geometry" />
+        </mxCell>
+        <mxCell id="gv3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="V_ALL_TICKETS" vertex="1">
+          <mxGeometry height="22" width="175" x="645" y="508" as="geometry" />
+        </mxCell>
+        <mxCell id="gv4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize:11;fontColor=#BDC3C7;spacingLeft=10;" value="V_ALL_EQUIPEMENTS" vertex="1">
+          <mxGeometry height="22" width="175" x="820" y="508" as="geometry" />
+        </mxCell>
+        <mxCell id="gv5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="V_ALL_HISTO" vertex="1">
+          <mxGeometry height="22" width="175" x="645" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="gv6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#00C9A7;spacingLeft=10;fontStyle=1;" value="V_DASHBOARD_GLOBAL" vertex="1">
+          <mxGeometry height="22" width="175" x="820" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="g_mv_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A1628;strokeColor=#E67E22;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="90" width="350" x="645" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="g_mv_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#E67E22;" value="Vues Matérialisées (MV)" vertex="1">
+          <mxGeometry height="20" width="350" x="645" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="mv1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="MV_DASHBOARD_GLOBAL" vertex="1">
+          <mxGeometry height="22" width="175" x="645" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="mv2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="MV_STATS_TICKETS" vertex="1">
+          <mxGeometry height="22" width="175" x="820" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="mv3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontColor=#BDC3C7;spacingLeft=10;" value="MV_PARC_ACTIF" vertex="1">
+          <mxGeometry height="22" width="175" x="645" y="682" as="geometry" />
+        </mxCell>
+        <mxCell id="mv_refresh" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#E67E22;fontStyle=2;spacingLeft=10;" value="▸ PROCEDURE refresh_all_mviews" vertex="1">
+          <mxGeometry height="18" width="350" x="645" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="g_readonly" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C3E50;fontColor=#BDC3C7;strokeColor=#7F8C8D;fontSize=11;" value="glpi_readonly  (SELECT only sur Cergy + Pau)" vertex="1">
+          <mxGeometry height="35" width="350" x="645" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_index_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5EEF8;strokeColor=#7D3C98;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="60" width="180" x="630" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_index_lbl" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#7D3C98;" value="TS_INDEX" vertex="1">
+          <mxGeometry height="25" width="180" x="630" y="875" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_index_sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#7D3C98;" value="Tous les index des 2 sites" vertex="1">
+          <mxGeometry height="20" width="180" x="630" y="898" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_histo_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F3F4;strokeColor=#7F8C8D;strokeWidth=2;dashed=1;" value="" vertex="1">
+          <mxGeometry height="60" width="180" x="830" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_histo_lbl" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#7F8C8D;" value="TS_HISTO" vertex="1">
+          <mxGeometry height="25" width="180" x="830" y="875" as="geometry" />
+        </mxCell>
+        <mxCell id="ts_histo_sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontColor=#7F8C8D;" value="Historiques des 2 sites" vertex="1">
+          <mxGeometry height="20" width="180" x="830" y="898" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_gc" edge="1" parent="1" source="global_bg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#00C9A7;strokeWidth=3;dashed=1;dashPattern=8 4;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;" target="cergy_bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_gc_lbl" connectable="0" parent="arrow_gc" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=12;fontStyle=1;fontColor=#00C9A7;" value="cergy_link" vertex="1">
+          <mxGeometry relative="1" x="0.1" y="-15" as="geometry">
+            <mxPoint x="-15" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_gp" edge="1" parent="1" source="global_bg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#00C9A7;strokeWidth=3;dashed=1;dashPattern=8 4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="pau_bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_gp_lbl" connectable="0" parent="arrow_gp" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontSize=12;fontStyle=1;fontColor=#00C9A7;" value="pau_link" vertex="1">
+          <mxGeometry relative="1" x="-0.1" y="-15" as="geometry">
+            <mxPoint x="-10" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_sc" edge="1" parent="1" source="sys_bg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#E74C3C;strokeWidth=2;dashed=1;" target="cergy_bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_sp" edge="1" parent="1" source="sys_bg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#E74C3C;strokeWidth=2;dashed=1;" target="pau_bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_sg" edge="1" parent="1" source="sys_bg" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#E74C3C;strokeWidth=2;dashed=1;" target="global_bg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

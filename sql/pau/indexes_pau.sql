@@ -1,8 +1,3 @@
--- =============================================================
--- INDEX PAU
--- A executer sur glpi_pau
--- =============================================================
-
 CREATE INDEX idx_pau_users_email
     ON USERS(email) TABLESPACE TS_INDEX;
 

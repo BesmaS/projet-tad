@@ -129,6 +129,13 @@ cells:
 
       GROUP  BY site;"
     languageId: oracle-sql
+  - kind: 2
+    value: "SELECT * FROM MV_DASHBOARD_GLOBAL;\r
+
+      SELECT * FROM MV_STATS_TICKETS ORDER BY site, priority;\r
+
+      SELECT * FROM MV_PARC_ACTIF ORDER BY site, computer_type;"
+    languageId: oracle-sql
   - kind: 1
     value: "## Test 10 : EXPLAIN PLAN vue globale BDDR"
     languageId: markdown
