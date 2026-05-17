@@ -1,9 +1,6 @@
--- =============================================================
--- TRIGGERS CERGY
--- A executer sur glpi_cergy
--- =============================================================
 
--- Trigger 1 : force creation_date = SYSDATE a chaque INSERT ticket
+
+--  force creation_date = SYSDATE a chaque INSERT ticket
 CREATE OR REPLACE TRIGGER trg_cergy_ticket_creation
 BEFORE INSERT ON TICKETS
 FOR EACH ROW
@@ -12,7 +9,7 @@ BEGIN
 END;
 /
 
--- Trigger 2 : enregistre automatiquement l affectation dans
+--  enregistre automatiquement l affectation dans
 -- HISTO_AFFECTATION quand on change le assigned_user d un ordinateur
 CREATE OR REPLACE TRIGGER trg_cergy_affectation_histo
 AFTER UPDATE OF assigned_user ON COMPUTERS
@@ -40,7 +37,7 @@ BEGIN
 END;
 /
 
--- Trigger 3 : interdit de supprimer un ticket encore OPEN
+--  interdit de supprimer un ticket encore OPEN
 CREATE OR REPLACE TRIGGER trg_cergy_ticket_no_delete_open
 BEFORE DELETE ON TICKETS
 FOR EACH ROW

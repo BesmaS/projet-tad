@@ -1,9 +1,3 @@
--- =============================================================
--- CLUSTER ORACLE - CERGY
--- Regroupe physiquement COMPUTERS et TICKETS par computer_id
--- dans les memes blocs disque
--- =============================================================
-
 CREATE CLUSTER cergy_cluster_comp_ticket (computer_id NUMBER)
     SIZE 512
     TABLESPACE TS_CERGY_DATA;

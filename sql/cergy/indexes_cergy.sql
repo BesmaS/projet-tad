@@ -1,7 +1,3 @@
--- =============================================================
--- INDEX CERGY
--- A executer sur glpi_cergy
--- =============================================================
 
 -- USERS
 CREATE INDEX idx_cergy_users_email
@@ -10,7 +6,6 @@ CREATE INDEX idx_cergy_users_email
 CREATE INDEX idx_cergy_users_username
     ON USERS(username) TABLESPACE TS_INDEX;
 
--- Index compose : users actifs par site
 CREATE INDEX idx_cergy_users_site_status
     ON USERS(site_id, status) TABLESPACE TS_INDEX;
 
@@ -21,7 +16,6 @@ CREATE INDEX idx_cergy_computers_inventory
 CREATE INDEX idx_cergy_computers_status
     ON COMPUTERS(status) TABLESPACE TS_INDEX;
 
--- Index compose : tous les PCs actifs de Cergy par type
 CREATE INDEX idx_cergy_computers_site_type_status
     ON COMPUTERS(site_id, computer_type, status) TABLESPACE TS_INDEX;
 
@@ -35,7 +29,6 @@ CREATE INDEX idx_cergy_tickets_priority
 CREATE INDEX idx_cergy_tickets_creation
     ON TICKETS(creation_date) TABLESPACE TS_INDEX;
 
--- Index compose : tickets ouverts par site (dashboard)
 CREATE INDEX idx_cergy_tickets_site_status
     ON TICKETS(site_id, status) TABLESPACE TS_INDEX;
 

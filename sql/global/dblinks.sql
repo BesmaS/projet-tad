@@ -1,8 +1,3 @@
--- =============================================================
--- DATABASE LINKS
--- A executer sur GLPI_GLOBAL (glpi_admin)
--- =============================================================
-
 CREATE DATABASE LINK cergy_link
     CONNECT TO glpi_cergy IDENTIFIED BY glpi123
     USING '(DESCRIPTION=

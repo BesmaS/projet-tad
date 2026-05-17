@@ -38,9 +38,6 @@ END;
 -- PROCEDURES
 -- =============================================================
 
--- ajouter un ticket
--- Utilise un curseur pour verifier que le technicien existe
--- et a bien le role_id = 2 avant d inserer
 CREATE OR REPLACE PROCEDURE add_ticket (
     p_ticket_id   NUMBER,
     p_title       VARCHAR2,
@@ -52,7 +49,6 @@ CREATE OR REPLACE PROCEDURE add_ticket (
     p_computer_id NUMBER
 )
 IS
-    -- Curseur : verifie que le technicien existe avec role 2
     CURSOR cur_check_tech IS
         SELECT user_id, username
         FROM   USERS
@@ -61,7 +57,7 @@ IS
 
     v_found BOOLEAN := FALSE;
 BEGIN
-    -- Parcourir le curseur de verification
+   
     FOR v_tech IN cur_check_tech LOOP
         v_found := TRUE;
         DBMS_OUTPUT.PUT_LINE('Technicien trouve : ' || v_tech.username);

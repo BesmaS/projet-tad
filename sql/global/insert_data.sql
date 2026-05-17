@@ -1,8 +1,3 @@
--- =============================================================
--- DONNEES INITIALES GLOBALES
--- A executer sur GLPI_GLOBAL
--- =============================================================
-
 INSERT INTO SITES VALUES (1, 'CY Tech Cergy', 'Cergy', 'O');
 INSERT INTO SITES VALUES (2, 'CY Tech Pau',   'Pau',   'O');
 

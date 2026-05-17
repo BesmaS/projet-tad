@@ -1,8 +1,3 @@
--- =============================================================
--- DONNEES INITIALES CERGY
--- A executer sur glpi_cergy
--- =============================================================
-
 -- LOCATIONS
 INSERT INTO LOCATIONS VALUES (1, 'Batiment-A', 'Salle-101', 'RDC',   1);
 INSERT INTO LOCATIONS VALUES (2, 'Batiment-A', 'Salle-201', '1er',   1);

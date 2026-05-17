@@ -1,8 +1,3 @@
--- =============================================================
--- TABLES GLOBALES : SITES et ROLES
--- A executer sur GLPI_GLOBAL
--- =============================================================
-
 CREATE TABLE SITES (
     site_id   NUMBER PRIMARY KEY,
     site_name VARCHAR2(100) NOT NULL,

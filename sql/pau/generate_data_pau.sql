@@ -1,9 +1,3 @@
--- =============================================================
--- GENERATION DE DONNEES MASSIVES - PAU (corrige)
--- A executer sur glpi_pau
--- Appel : EXEC generate_all_data_pau(500, 300, 5000);
--- =============================================================
-
 CREATE OR REPLACE PROCEDURE generate_all_data_pau (
     p_nb_users   NUMBER,
     p_nb_comp    NUMBER,

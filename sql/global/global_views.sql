@@ -1,8 +1,3 @@
--- =============================================================
--- VUES GLOBALES (BDDR)
--- A executer sur GLPI_GLOBAL apres creation des dblinks
--- =============================================================
-
 -- Vue tous les utilisateurs
 CREATE OR REPLACE VIEW V_ALL_USERS AS
 SELECT 'CERGY' AS site,
