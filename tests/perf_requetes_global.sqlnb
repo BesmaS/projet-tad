@@ -129,13 +129,6 @@ cells:
 
       GROUP  BY site;"
     languageId: oracle-sql
-  - kind: 2
-    value: "SELECT * FROM MV_DASHBOARD_GLOBAL;\r
-
-      SELECT * FROM MV_STATS_TICKETS ORDER BY site, priority;\r
-
-      SELECT * FROM MV_PARC_ACTIF ORDER BY site, computer_type;"
-    languageId: oracle-sql
   - kind: 1
     value: "## Test 10 : EXPLAIN PLAN vue globale BDDR"
     languageId: markdown
@@ -153,6 +146,33 @@ cells:
       ORDER  BY site, priority;\r
 
       \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "EXEC DBMS_MVIEW.REFRESH('MV_DASHBOARD_GLOBAL', 'C');\r
+
+      EXEC DBMS_MVIEW.REFRESH('MV_STATS_TICKETS', 'C');\r
+
+      EXEC DBMS_MVIEW.REFRESH('MV_PARC_ACTIF', 'C');"
+    languageId: oracle-sql
+  - kind: 1
+    value: "##  EXPLAIN PLAN vue normale (via database links)\r\n"
+    languageId: markdown
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT * FROM V_DASHBOARD_GLOBAL;\r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);\r\n"
+    languageId: oracle-sql
+  - kind: 1
+    value: "##  EXPLAIN PLAN MV (données locales)"
+    languageId: markdown
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT * FROM MV_DASHBOARD_GLOBAL;\r
 
       SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
     languageId: oracle-sql

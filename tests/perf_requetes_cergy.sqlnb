@@ -313,3 +313,31 @@ cells:
 
       EXEC rapport_tickets_priorite;"
     languageId: oracle-sql
+  - kind: 1
+    value: "##  Forcer l'utilisation de l'index compose avec un HINT Oracle\r\n"
+    languageId: markdown
+  - kind: 2
+    value: "EXPLAIN PLAN FOR\r
+
+      SELECT /*+ INDEX(c idx_cergy_computers_site_type_status) */\r
+
+      \       c.computer_id, c.inventory_number, c.computer_name,\r
+
+      \       c.brand, c.model, c.computer_type, c.status,\r
+
+      \       u.username, u.email\r
+
+      FROM   COMPUTERS c\r
+
+      JOIN   USERS u ON c.assigned_user = u.user_id\r
+
+      WHERE  c.site_id       = 1\r
+
+      AND    c.computer_type = 'DESKTOP'\r
+
+      AND    c.status        = 'ACTIVE';\r
+
+      \r
+
+      SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);"
+    languageId: oracle-sql
